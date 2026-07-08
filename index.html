@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hades 66</title>
+  <title>Hades 66 | Official Website</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div id="intro">
-    <img src="assets/logo.png" class="intro-logo">
+    <img src="logo.png" class="intro-logo" alt="Hades 66">
     <h1>HADES 66</h1>
-    <p>CLICK TO ENTER</p>
+    <span>OFFICIAL WEBSITE</span>
+    <p>ENTER</p>
   </div>
 
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="assets/video.mp4" type="video/mp4">
+  <video preload="auto" playsinline id="bg-video">
+    <source src="video.mp4" type="video/mp4">
   </video>
 
   <div class="overlay"></div>
 
   <main class="contenido hidden">
-    <img src="assets/logo.png" class="logo">
+   <img src="logo.png" class="logo" alt="Hades 66">
 
     <h1>Hades 66</h1>
     <p>Escucha su música y síguelo en sus redes oficiales.</p>
@@ -34,7 +35,28 @@
     </div>
   </main>
 
-  <button id="musicBtn">🔇 Music</button>
+  <div id="musicPanel">
+    <div class="songInfo">
+      <div class="equalizer">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div>
+        <strong>Hades 66</strong>
+        <p>Now Playing</p>
+      </div>
+    </div>
+
+    <button id="musicBtn">🔇 Music</button>
+
+    <div class="volumeBox">
+      <span>🔉</span>
+      <input type="range" id="volumeSlider" min="0" max="100" value="100">
+      <span>🔊</span>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
