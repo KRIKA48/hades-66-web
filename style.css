@@ -31,23 +31,32 @@ body {
 
 .intro-logo {
   width: 180px;
-  filter: drop-shadow(0 0 30px red);
+  filter: drop-shadow(0 0 35px red);
+  animation: float 3s ease-in-out infinite;
 }
 
 #intro h1 {
   margin-top: 25px;
   font-size: 55px;
-  letter-spacing: 6px;
+  letter-spacing: 7px;
   text-shadow: 0 0 25px red;
 }
 
+#intro span {
+  margin-top: 10px;
+  color: #aaa;
+  letter-spacing: 4px;
+  font-size: 13px;
+}
+
 #intro p {
-  margin-top: 20px;
-  padding: 13px 35px;
+  margin-top: 24px;
+  padding: 13px 38px;
   border: 1px solid red;
   border-radius: 40px;
   letter-spacing: 4px;
-  box-shadow: 0 0 20px red;
+  box-shadow: 0 0 22px red;
+  animation: pulse 1.4s infinite;
 }
 
 #bg-video {
@@ -56,14 +65,16 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -2;
+  z-index: -3;
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.68);
-  z-index: -1;
+  background:
+    radial-gradient(circle, rgba(255, 0, 0, 0.24), transparent 45%),
+    rgba(0, 0, 0, 0.68);
+  z-index: -2;
 }
 
 .contenido {
@@ -75,11 +86,13 @@ body {
   gap: 18px;
   text-align: center;
   padding: 20px;
+  animation: entrada 1s ease;
 }
 
 .logo {
   width: 160px;
-  filter: drop-shadow(0 0 25px red);
+  filter: drop-shadow(0 0 28px red);
+  animation: float 3s ease-in-out infinite;
 }
 
 .contenido h1 {
@@ -89,8 +102,9 @@ body {
   text-shadow: 0 0 25px red;
 }
 
-p {
+.contenido p {
   font-size: 18px;
+  opacity: 0.9;
 }
 
 .sociales {
@@ -100,28 +114,150 @@ p {
   justify-content: center;
 }
 
-.sociales a,
-#musicBtn {
+.sociales a {
   padding: 14px 24px;
   border-radius: 40px;
   border: 1px solid white;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   color: white;
   text-decoration: none;
   cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
 }
 
-.sociales a:hover,
-#musicBtn:hover {
+.sociales a:hover {
   background: red;
   border-color: red;
+  box-shadow: 0 0 25px red;
+  transform: translateY(-3px);
 }
 
-#musicBtn {
+#musicPanel {
   position: fixed;
   right: 25px;
   bottom: 25px;
+  width: 265px;
+  padding: 16px;
+  border-radius: 22px;
+  background: rgba(0, 0, 0, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.35);
   z-index: 50;
+}
+
+.songInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.songInfo strong {
+  letter-spacing: 1px;
+}
+
+.songInfo p {
+  font-size: 12px;
+  color: #ccc;
+  margin-top: 2px;
+}
+
+#musicBtn {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 40px;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#musicBtn:hover {
+  background: red;
+  border-color: red;
+  box-shadow: 0 0 20px red;
+}
+
+.volumeBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#volumeSlider {
+  width: 100%;
+  cursor: pointer;
+  accent-color: red;
+}
+
+.equalizer {
+  display: flex;
+  gap: 4px;
+  align-items: end;
+  height: 24px;
+}
+
+.equalizer span {
+  width: 5px;
+  height: 10px;
+  background: red;
+  border-radius: 6px;
+  box-shadow: 0 0 12px red;
+  animation: eq 0.7s infinite alternate;
+}
+
+.equalizer span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.equalizer span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes entrada {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes eq {
+  from {
+    height: 8px;
+  }
+
+  to {
+    height: 24px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -138,5 +274,12 @@ p {
   .sociales a {
     width: 100%;
     max-width: 280px;
+  }
+
+  #musicPanel {
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    width: auto;
   }
 }
